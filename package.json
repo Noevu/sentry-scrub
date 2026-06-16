@@ -1,14 +1,16 @@
 {
 	"name": "@noevu/sentry-scrub",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Fail-closed PII scrubber for Sentry/GlitchTip events (server-side). Scrubs request data, console breadcrumbs, stack-frame locals, exception messages, source-context lines, and numbers by key-path allowlist; de-dashes GlitchTip DSNs.",
 	"type": "module",
-	"main": "./dist/index.js",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js"
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
 		}
 	},
 	"files": [
@@ -33,11 +35,12 @@
 		"access": "public"
 	},
 	"scripts": {
-		"build": "tsc -p tsconfig.json",
+		"build": "tsup src/index.ts --format esm,cjs --dts --clean",
 		"test": "vitest run",
 		"test:watch": "vitest"
 	},
 	"devDependencies": {
+		"tsup": "^8.5.1",
 		"typescript": "^5.7.0",
 		"vitest": "^3.2.0"
 	}
