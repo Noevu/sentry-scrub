@@ -1,0 +1,44 @@
+{
+	"name": "@noevu/sentry-scrub",
+	"version": "1.0.0",
+	"description": "Fail-closed PII scrubber for Sentry/GlitchTip events (server-side). Scrubs request data, console breadcrumbs, stack-frame locals, exception messages, source-context lines, and numbers by key-path allowlist; de-dashes GlitchTip DSNs.",
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"sideEffects": false,
+	"license": "MIT",
+	"keywords": [
+		"sentry",
+		"glitchtip",
+		"pii",
+		"scrubber",
+		"privacy",
+		"beforeSend"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Noevu/sentry-scrub.git"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com",
+		"access": "public"
+	},
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"test": "vitest run",
+		"test:watch": "vitest"
+	},
+	"devDependencies": {
+		"typescript": "^5.7.0",
+		"vitest": "^3.2.0"
+	}
+}
